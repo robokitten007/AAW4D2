@@ -1,4 +1,4 @@
-require_relative 'piece.rb'
+require_relative 'include.rb'
 require 'byebug'
 =begin
 @rows: Array (of Arrays) - 8 x 8
@@ -71,7 +71,7 @@ class Board
         #black king
         @rows[7][4] = King.new(:black, self, [7,3])
 
-        (3..5).each do |rowIx|
+        (2..5).each do |rowIx|
             (0..7).each do |colIx|
                 @rows[rowIx][colIx] = NullPiece.new(nil, self, [rowIx, colIx])
             end
@@ -95,12 +95,12 @@ class Board
         startX, startY = start_pos[0], start_pos[1]
         finalX, finalY = end_pos[0], end_pos[1]
     
-        if @row[startX][startY].is_a?(NullPiece)
-            raise "No piece at start position"
-        elsif @row[finalX][finalY].color == color
-            raise "There is already a #{color} piece there"
-        end
-        
+        # if @row[startX][startY].color == nil
+        #     raise "No piece at start position"
+        # end
+        # elsif @row[finalX][finalY].color == color
+        #     raise "There is already a #{color} piece there"
+        # end
         
 
         @rows[finalX][finalY] = @rows[startX][startY]
